@@ -4,5 +4,5 @@ maintainer_email "steffen.gebert@typo3.org"
 license          "Apache 2.0"
 description      "A library cookbook extending the chef-vault library cookbook"
 
-version          "1.0.2"
+version          "1.0.3"
 depends          "chef-vault", "~> 1.3.3"
