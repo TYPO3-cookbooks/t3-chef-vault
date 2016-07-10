@@ -45,9 +45,11 @@ class Chef
 
       Chef::Log.info("Searching for chef-vault item '#{item}' in the '#{bag}' data bag")
 
-      vault_answer = chef_vault_item(bag, item)
-
-      raise "Chef-vault did not return anything for #{bag}/#{item}" if vault_answer.nil?
+      begin
+        vault_answer = chef_vault_item(bag, item)
+      ensure
+        raise "Chef-vault did not return anything for #{bag}/#{item}" if vault_answer.nil?
+      end
 
       Chef::Log.debug("Got answer from chef-vault")
 
