@@ -54,7 +54,11 @@ class Chef
       Chef::Log.debug("Got answer from chef-vault")
 
       password = vault_answer[type]
-      Chef::Log.debug("Returning entry '#{type}': '#{password[0..2]}...'")
+      if password.nil?
+        Chef::Log.warn("No entry '#{type}' found in #{bag}/#{item}'")
+      else
+        Chef::Log.debug("Returning entry '#{type}': '#{password[0..2]}...'")
+      end
 
       password
     end
